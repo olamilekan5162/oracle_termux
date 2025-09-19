@@ -29,7 +29,7 @@ project/
 
 1. Clone or download this repository:
    ```bash
-   git clone https://github.com/your-username/termux-nvim-setup.git
+   git clone https://github.com/olamilekan5162/oracle_termux.git
    cd termux-nvim-setup
    ```
 2. Open the `index.html` file in your browser.
@@ -39,18 +39,6 @@ project/
 
 3. Follow the steps in order.
    - Each step has a **copy button** (📋) so you can paste directly into Termux.
-
----
-
-## 📸 Screenshots
-
-### Desktop View
-
-![desktop preview](screenshot-desktop.png)
-
-### Mobile View
-
-![mobile preview](screenshot-mobile.png)
 
 ---
 
@@ -78,4 +66,4 @@ This project is licensed under the **MIT License** – feel free to use and modi
 
 ## 👨‍💻 Author
 
-Created by **[Your Name](https://github.com/your-username)** 🚀
+Created by **[ORACLE](https://github.com/olamilekan5162)** 🚀
