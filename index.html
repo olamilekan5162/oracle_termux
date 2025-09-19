@@ -8,17 +8,53 @@
 </head>
 <body>
   <header>
-    <h1>📱 Termux Neovim Setup Guide</h1>
+    <h1>📱 Termux Setup Guide</h1>
   </header>
-  <div class="container">
 
-    <h2>Step 0: Install Termux</h2>
-    <p>Download and install Termux from 
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" data-tab="basic">Basic Setup</div>
+    <div class="tab" data-tab="advanced">Advanced Setup</div>
+  </div>
+
+  <!-- Basic Setup Content -->
+  <div class="container tab-content" id="basic" style="display: block;">
+    <h2>Step 1: Install Termux</h2>
+    <p>Download Termux from 
       <a href="https://f-droid.org/packages/com.termux/" target="_blank">F-Droid</a> (recommended) 
       or from the 
       <a href="https://github.com/termux/termux-app/releases" target="_blank">official GitHub releases</a>.
     </p>
 
+    <h2>Step 2: Setup Git</h2>
+    <pre><button class="copy-btn">Copy</button><code>pkg update && pkg upgrade
+pkg install git</code></pre>
+    <p>Configure your Git username and email:</p>
+    <pre><button class="copy-btn">Copy</button><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+
+    <h2>Step 3: Install Node.js & npm</h2>
+    <pre><button class="copy-btn">Copy</button><code>pkg install nodejs</code></pre>
+    <p>Check installation:</p>
+    <pre><button class="copy-btn">Copy</button><code>node -v
+npm -v</code></pre>
+
+    <h2>Step 4: Install Acode and Access Termux Files</h2>
+    <p>
+      1. Install <a href="https://play.google.com/store/apps/details?id=com.foxdebug.acodefree" target="_blank">Acode Editor</a> from Play Store. <br>
+      2. In Termux, move your project files to the shared storage so Acode can access them:
+    </p>
+    <pre><button class="copy-btn">Copy</button><code>termux-setup-storage
+mkdir -p ~/storage/shared/termux-projects
+cp -r ~/myproject ~/storage/shared/termux-projects/</code></pre>
+    <p>
+      3. Open Acode → Tap <b>Open Folder</b> → Navigate to <code>Internal Storage/termux-projects</code>.  
+      Now you can edit files created in Termux directly inside Acode 🎉
+    </p>
+  </div>
+
+  <!-- Advanced Setup Content -->
+  <div class="container tab-content" id="advanced" style="display: none;">
     <h2>Step 1: Update and Upgrade Packages</h2>
     <pre><button class="copy-btn">Copy</button><code>pkg update && pkg upgrade</code></pre>
 
@@ -131,9 +167,9 @@ pip install pynvim</code></pre>
 
     <h2>✅ Done!</h2>
     <p>Exit Termux, restart, and run <code>nvim</code> to start coding 🚀</p>
-
   </div>
 
   <script src="script.js"></script>
-  </body>
+    
+</body>
 </html>
