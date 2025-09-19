@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termux Neovim Setup Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>📱 Termux Neovim Setup Guide</h1>
+  </header>
+  <div class="container">
+
+    <h2>Step 0: Install Termux</h2>
+    <p>Download and install Termux from 
+      <a href="https://f-droid.org/packages/com.termux/" target="_blank">F-Droid</a> (recommended) 
+      or from the 
+      <a href="https://github.com/termux/termux-app/releases" target="_blank">official GitHub releases</a>.
+    </p>
+
+    <h2>Step 1: Update and Upgrade Packages</h2>
+    <pre><button class="copy-btn">Copy</button><code>pkg update && pkg upgrade</code></pre>
+
+    <h2>Step 2: Install Neovim</h2>
+    <pre><button class="copy-btn">Copy</button><code>pkg install neovim</code></pre>
+
+    <h2>Step 3: Install Vim Plug</h2>
+    <pre><button class="copy-btn">Copy</button><code>curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</code></pre>
+
+    <h2>Step 4: Setup Config Directory</h2>
+    <pre><button class="copy-btn">Copy</button><code>mkdir -p ~/.config/nvim
+touch ~/.config/nvim/init.vim</code></pre>
+
+    <h2>Step 5: Open Config File</h2>
+    <pre><button class="copy-btn">Copy</button><code>nano ~/.config/nvim/init.vim</code></pre>
+
+    <h2>Step 6: Add Neovim Config</h2>
+    <pre><button class="copy-btn">Copy</button><code>call plug#begin('~/.vim/plugged')
+" File Explorer
+Plug 'preservim/nerdtree'
+" Syntax Highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Autocompletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Status Line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+" Theme
+Plug 'morhetz/gruvbox'
+" Git Integration
+Plug 'tpope/vim-fugitive'
+call plug#end()
+
+" Automatically open NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) | execute 'NERDTree' argv()[0] | wincmd p | endif
+
+syntax enable
+colorscheme gruvbox
+set background=dark
+
+inoremap <silent><expr> <CR> pumvisible() ? coc#pum#confirm() : "\<C-g>u\<CR>"
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='gruvbox'
+
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+set number
+set relativenumber
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set mouse=a
+set clipboard=unnamedplus
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
+}
+EOF</code></pre>
+
+    <h2>Step 7: Save and Exit</h2>
+    <pre><code>Press CTRL + O, Enter, then CTRL + X</code></pre>
+
+    <h2>Step 8: Install Plugins</h2>
+    <pre><button class="copy-btn">Copy</button><code>nvim
+:PlugInstall</code></pre>
+
+    <h2>Step 9: Setup coc-settings.json</h2>
+    <pre><button class="copy-btn">Copy</button><code>mkdir -p ~/.config/nvim/coc-settings.json
+nano ~/.config/nvim/coc-settings.json</code></pre>
+
+    <h2>Step 10: Add coc-settings.json Config</h2>
+    <pre><button class="copy-btn">Copy</button><code>{
+  "prettier.enable": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.semi": true,
+  "prettier.useTabs": false,
+  "coc.preferences.formatOnSave": true,
+  "prettier.arrowParens": "always",
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "json", "css", "html"],
+  "suggest.acceptSuggestionOnEnter": "always",
+  "snippets.ultisnips.pythonPrompt": false,
+  "snippets.userSnippetsDirectory": "~/.config/coc/ultisnips",
+  "suggest.noselect": false,
+  "coc.preferences.snippetIndicator": "●",
+  "snippets.enable": true,
+  "suggest.enablePreselect": true
+}</code></pre>
+
+    <h2>Step 11: Install coc Extensions</h2>
+    <pre><button class="copy-btn">Copy</button><code>:CocInstall coc-tsserver coc-html coc-css coc-json
+:CocInstall coc-prettier
+:CocInstall coc-eslint
+:CocInstall coc-snippets
+:CocCommand snippets.openSnippetFiles</code></pre>
+
+    <h2>Step 12: Python Support</h2>
+    <pre><button class="copy-btn">Copy</button><code>pkg install python
+pip install pynvim</code></pre>
+
+    <h2>✅ Done!</h2>
+    <p>Exit Termux, restart, and run <code>nvim</code> to start coding 🚀</p>
+
+  </div>
+
+  <script src="script.js"></script>
+  </body>
+</html>
