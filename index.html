@@ -26,30 +26,44 @@
       <a href="https://github.com/termux/termux-app/releases" target="_blank">official GitHub releases</a>.
     </p>
 
-    <h2>Step 2: Setup Git</h2>
-    <pre><button class="copy-btn">Copy</button><code>pkg update
-pkg upgrade
-pkg install git</code></pre>
-    <p>Create a <a href="https://github.com/signup" target="_blank">GitHub</a> and configure your Git username and email:</p>
-    <pre><button class="copy-btn">Copy</button><code>git config --global user.name "Your Name"
-git config --global user.email "you@example.com"</code></pre>
+    <h2>Step 2: Setup Termux</h2>
 
-    <h2>Step 3: Install Node.js & npm</h2>
+    <p>Update the package lists:</p>
+    <pre><button class="copy-btn">Copy</button><code>pkg update</code></pre>
+    <p>Upgrade all installed packages:</p>
+    <pre><button class="copy-btn">Copy</button><code>pkg upgrade</code></pre>
+    <p>Grant storage access to Termux to access your device's internal storage: </p>
+    <pre><button class="copy-btn">Copy</button><code>termux-setup-storage</code></pre>
+
+    <h2>Step 3: Setup Git</h2>
+
+    <p>Create a <a href="https://github.com/signup" target="_blank">GitHub</a> Account and configure your Git username and email on termux:</p>
+    <p>Install git on termux:</p>
+    <pre><button class="copy-btn">Copy</button><code>pkg install git</code></pre>
+    <p>configure your git profile:</p>
+    <pre><button class="copy-btn">Copy</button><code>git config --global user.name "Your GitHub profile Username"</code></pre>
+    <pre><button class="copy-btn">Copy</button><code>git config --global user.email "Your GitHub profile Email"</code></pre>
+    <p>You can check if it worked by running the commands below, it should print back the name and email you set</p>
+    <pre><button class="copy-btn">Copy</button><code>git config --global user.email
+git config --global user.name</code></pre>
+    
+
+    <h2>Step 4: Install Node.js & npm</h2>
     <pre><button class="copy-btn">Copy</button><code>pkg install nodejs</code></pre>
     <p>Check installation:</p>
     <pre><button class="copy-btn">Copy</button><code>node -v
 npm -v</code></pre>
 
-    <h2>Step 4: Install Acode and Access Termux Files</h2>
+    <h2>Step 4: Install Acode, Coding Keyboard, Material Files and Access Termux Files</h2>
     <p>
       1. Install <a href="https://play.google.com/store/apps/details?id=com.foxdebug.acodefree" target="_blank">Acode Editor</a> from Play Store. <br>
       2. Install <a href="https://play.google.com/store/apps/details?id=com.ajay.prokeyboard&hl=en" target="_blank">Coding Keyboard</a> from Play Store. <br>
-      3. In Termux, make your storage accessible so Acode can access them:
-    </p>
-    <pre><button class="copy-btn">Copy</button><code>termux-setup-storage</code></pre>
-    <p>
-      4. Open Acode → Tap <b>Open Folder</b> → Navigate to <code>Internal Storage/termux-projects</code>.  
+      3. Install <a href="https://play.google.com/store/apps/details?id=me.zhanghai.android.files&hl=en" target="_blank">Material files</a> from Play Store. <br> <br>
+      4. Open Acode → Click on the top left <b>Hamburger Icon</b> →  Click on <b>Open Folder</b> → Click on the <b>Plus Icon</b> to add folder → Click on <b>Add Path</b> and add path to your termux folder. <br>  
       Now you can edit files created in Termux directly inside Acode 🎉
+      <br><br>
+      5. Open Material Files → Click on the <b>Hamburger Icon</b> on the top left → Click on <b>Add Storage</b> → Click on <b>External Storage</b> and add path to your termux folder. <br> 
+      Now you can easily access Termux files from Material Files 🎉
     </p>
   </div>
 
