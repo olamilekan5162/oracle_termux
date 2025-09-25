@@ -27,7 +27,8 @@
     </p>
 
     <h2>Step 2: Setup Git</h2>
-    <pre><button class="copy-btn">Copy</button><code>pkg update && pkg upgrade
+    <pre><button class="copy-btn">Copy</button><code>pkg update
+pkg upgrade
 pkg install git</code></pre>
     <p>Configure your Git username and email:</p>
     <pre><button class="copy-btn">Copy</button><code>git config --global user.name "Your Name"
@@ -44,9 +45,7 @@ npm -v</code></pre>
       1. Install <a href="https://play.google.com/store/apps/details?id=com.foxdebug.acodefree" target="_blank">Acode Editor</a> from Play Store. <br>
       2. In Termux, move your project files to the shared storage so Acode can access them:
     </p>
-    <pre><button class="copy-btn">Copy</button><code>termux-setup-storage
-mkdir -p ~/storage/shared/termux-projects
-cp -r ~/myproject ~/storage/shared/termux-projects/</code></pre>
+    <pre><button class="copy-btn">Copy</button><code>termux-setup-storage</code></pre>
     <p>
       3. Open Acode → Tap <b>Open Folder</b> → Navigate to <code>Internal Storage/termux-projects</code>.  
       Now you can edit files created in Termux directly inside Acode 🎉
